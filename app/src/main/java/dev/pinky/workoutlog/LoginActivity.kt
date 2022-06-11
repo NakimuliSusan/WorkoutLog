@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
             validateLogin()
+            startActivity(Intent(this,HomeActivity::class.java))
         }
         tvSignup .setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
@@ -38,12 +39,19 @@ class LoginActivity : AppCompatActivity() {
     fun validateLogin () {
         var email = etEmail.text.toString()
         var password = etPassword.text.toString()
+        var error = false
 
         if (email.isBlank()){
             tilEmail.error = getString(R.string.email_required)
+            error = true
         }
         if (password.isBlank()){
             tilPassword.error = getString(R.string.password_required)
+            error = true
+        }
+        if (!error) {
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
         }
     }
 }

@@ -9,4 +9,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="lastname">LastName</string>
     <string name="firstname">FirstName</string>
+    <string name="plan">Plan</string>
+    <string name="track">Track</string>
+    <string name="profile">Profile</string>
 </resources>
