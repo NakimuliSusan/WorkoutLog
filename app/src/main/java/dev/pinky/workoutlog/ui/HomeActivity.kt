@@ -1,9 +1,8 @@
-package dev.pinky.workoutlog
+package dev.pinky.workoutlog.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentContainerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.pinky.workoutlog.R
 import dev.pinky.workoutlog.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

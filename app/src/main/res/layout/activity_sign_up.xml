@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity"
+    tools:context=".ui.SignUpActivity"
     >
 
     <com.google.android.material.textfield.TextInputLayout
@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,15 +30,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilLastname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilFirstname"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@+id/tilFirstname">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLastname"
@@ -49,23 +49,44 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilLastname"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:layout_constraintTop_toBottomOf="@+id/tilLastname">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="61dp"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhonenumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPhonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword1"
@@ -73,11 +94,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmail1"
+        app:layout_constraintTop_toBottomOf="@+id/tilPhonenumber"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -88,15 +110,17 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilConfirm"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword1"
         app:passwordToggleEnabled="true">
@@ -106,9 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/confirm_password"
-            android:inputType="textPassword"
- />
-
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -118,12 +140,13 @@
         android:layout_marginTop="32dp"
         android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilConfirm" />
 
     <TextView
         android:id="@+id/tvLogin"
-        android:layout_width="27dp"
+        android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginTop="8dp"
         android:text="@string/login"
@@ -193,4 +216,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tilConfirm"
         app:srcCompat="@drawable/ic_baseline_security_24" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_baseline_phone_android_24"
+        app:layout_constraintBottom_toBottomOf="@+id/tilPhonenumber"
+        app:layout_constraintEnd_toStartOf="@+id/tilPhonenumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tilPhonenumber" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

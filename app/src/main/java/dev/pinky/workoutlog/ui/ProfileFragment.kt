@@ -1,10 +1,12 @@
-package dev.pinky.workoutlog
+package dev.pinky.workoutlog.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dev.pinky.workoutlog.R
+
 class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

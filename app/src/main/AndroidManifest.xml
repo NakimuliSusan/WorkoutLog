@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="dev.pinky.workoutlog">
-
+    package="dev.pinky.workoutlog"
+    >
+  <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,19 +12,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.WorkoutLog"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".ui.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
