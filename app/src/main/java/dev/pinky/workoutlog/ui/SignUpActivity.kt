@@ -1,9 +1,10 @@
 package dev.pinky.workoutlog.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import dev.pinky.workoutlog.databinding.ActivitySignUpBinding
 import dev.pinky.workoutlog.models.RegisterRequest
 import dev.pinky.workoutlog.models.RegisterResponse
@@ -16,8 +17,10 @@ import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignUpBinding
+    lateinit var sharedPrefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPrefs = getSharedPreferences("WORKOUTLOG_PREFS", MODE_PRIVATE)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -27,6 +30,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.tvLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
+
     }
     fun validateSignup() {
         var firstname = binding.etFirstname.text.toString()
@@ -84,6 +88,7 @@ class SignUpActivity : AppCompatActivity() {
                    var message = response.body()?.message
                    Toast.makeText(baseContext,message,Toast.LENGTH_LONG).show()
                    // intent to login
+                   startActivity(Intent(this@SignUpActivity,LoginActivity::class.java))
 
                }
                else{

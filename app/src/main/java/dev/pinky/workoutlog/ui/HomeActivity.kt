@@ -1,5 +1,7 @@
 package dev.pinky.workoutlog.ui
 
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dev.pinky.workoutlog.R
@@ -7,12 +9,16 @@ import dev.pinky.workoutlog.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeBinding
-
+    lateinit var sharedPrefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPrefs = getSharedPreferences("WORKOUTLOG_PREFS", MODE_PRIVATE)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNav()
+        binding.tvLogout.setOnClickListener {
+            Logoutrequest()
+        }
     }
 
     fun setupBottomNav() {
@@ -37,6 +43,11 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    fun Logoutrequest () {
+        sharedPrefs.edit().clear().commit()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }
 //principles of OOP

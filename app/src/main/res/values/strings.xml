@@ -18,4 +18,6 @@
     <string name="track_fragment">Track Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
     <string name="phone_number">Phone number</string>
+    <string name="welcome_to_workout_log">Welcome to Workout Log</string>
+    <string name="logout">Logout</string>
 </resources>
