@@ -1,4 +1,4 @@
-package dev.pinky.workoutlog.retrofit
+package dev.pinky.workoutlog.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

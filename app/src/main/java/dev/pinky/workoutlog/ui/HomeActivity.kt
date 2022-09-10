@@ -16,9 +16,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNav()
-        binding.tvLogout.setOnClickListener {
-            Logoutrequest()
-        }
     }
 
     fun setupBottomNav() {
@@ -44,10 +41,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-    fun Logoutrequest () {
-        sharedPrefs.edit().clear().commit()
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
-    }
+
 }
 //principles of OOP

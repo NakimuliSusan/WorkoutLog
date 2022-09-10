@@ -1,17 +1,18 @@
-package dev.pinky.workoutlog.retrofit
+package dev.pinky.workoutlog.api
 
 import dev.pinky.workoutlog.models.LoginRequest
 import dev.pinky.workoutlog.models.LoginResponse
 import dev.pinky.workoutlog.models.RegisterRequest
 import dev.pinky.workoutlog.models.RegisterResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiInterface {
     @POST("/register")
-    fun registerUser(@Body registerRequest: RegisterRequest):Call<RegisterResponse>
+    suspend fun registerUser(@Body registerRequest: RegisterRequest):Response<RegisterResponse>
 
     @POST("/login")
-    fun loginUser(@Body  loginRequest: LoginRequest): Call <LoginResponse>
+    suspend fun loginUser(@Body  loginRequest: LoginRequest): Response <LoginResponse>
 }
