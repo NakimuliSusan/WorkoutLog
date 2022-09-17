@@ -14,6 +14,7 @@ import dev.pinky.workoutlog.models.LoginRequest
 import dev.pinky.workoutlog.models.LoginResponse
 import dev.pinky.workoutlog.api.ApiClient
 import dev.pinky.workoutlog.api.ApiInterface
+import dev.pinky.workoutlog.util.Constants
 import dev.pinky.workoutlog.viewmodel.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        sharedPrefs = getSharedPreferences("WORKOUTLOG_PREFS", MODE_PRIVATE)
+        sharedPrefs = getSharedPreferences(Constants.prefsFiles, MODE_PRIVATE)
 
 // a coroutine is a unit of suspension compa
 
@@ -77,9 +78,10 @@ class LoginActivity : AppCompatActivity() {
 
     fun saveLoginResponse(loginResponse: LoginResponse){
         val editor = sharedPrefs.edit()
-        editor.putString("ACCESS_TOKEN",loginResponse.accessToken)
-        editor.putString("USER_ID",loginResponse.userId)
-        editor.putString("PROFILE_ID",loginResponse.profileId)
+        val token = "Bearer  ${loginResponse.accessToken}"
+        editor.putString(Constants.accessToken,token)
+        editor.putString(Constants.userId,loginResponse.userId)
+        editor.putString(Constants.profileId,loginResponse.profileId)
         editor.apply()
     }
 
