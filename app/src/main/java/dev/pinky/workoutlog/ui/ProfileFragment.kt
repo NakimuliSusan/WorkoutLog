@@ -6,14 +6,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.pinky.workoutlog.databinding.FragmentProfileBinding
+import dev.pinky.workoutlog.viewmodel.ExerciseViewModel
+import dev.pinky.workoutlog.viewmodel.ProfileViewModel
+import java.util.EnumSet.of
 
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
     lateinit var sharedPrefs: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

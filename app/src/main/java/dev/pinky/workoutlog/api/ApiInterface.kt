@@ -17,4 +17,7 @@ interface ApiInterface {
 
     @GET("/exercise-categories")
     suspend fun fetchExerciseCategories(@Header("Authorization")accessToken:String): Response<List<ExerciseCategory>>
+
+    @POST ("/profile")
+    suspend fun createProfile (@Body createProfilerequest : CreateProfilerequest) : Response<ProfileResponse>
 }
