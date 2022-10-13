@@ -21,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
         sharedPrefs = getSharedPreferences(Constants.prefsFiles, MODE_PRIVATE)
         val token = sharedPrefs.getString(Constants.accessToken, Constants.EMPTY_STRING)
         exerciseViewModel.fetchExerciseCategories(token!!)
+        exerciseViewModel.fetchExercises(token)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNav()

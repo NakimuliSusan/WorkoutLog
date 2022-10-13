@@ -22,7 +22,7 @@ import java.util.EnumSet.of
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
     lateinit var sharedPrefs: SharedPreferences
-    val profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
+//    val profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,15 +38,15 @@ class ProfileFragment : Fragment() {
         return  binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        profileViewModel.profileResponseLiveData.observe(this, Observer { profileresponse ->
-            Toast.makeText(context, profileresponse.userId, Toast.LENGTH_LONG).show()
-        })
-        profileViewModel.errorLiveData.observe(this, Observer { error->
-            Toast.makeText(context,error, Toast.LENGTH_LONG).show()
-        })
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        profileViewModel.profileResponseLiveData.observe(this, Observer { profileresponse ->
+//            Toast.makeText(context, profileresponse.userId, Toast.LENGTH_LONG).show()
+//        })
+//        profileViewModel.errorLiveData.observe(this, Observer { error->
+//            Toast.makeText(context,error, Toast.LENGTH_LONG).show()
+//        })
+//    }
 
     fun Logoutrequest () {
         sharedPrefs.edit().clear().apply()
