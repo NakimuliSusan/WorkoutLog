@@ -1,5 +1,6 @@
 package dev.pinky.workoutlog.repository
 
+import androidx.lifecycle.LiveData
 import dev.pinky.workoutlog.WorkoutLog
 import dev.pinky.workoutlog.api.ApiClient
 import dev.pinky.workoutlog.api.ApiInterface
@@ -39,5 +40,13 @@ class ExerciseRepository {
             }
             response
         }
+    }
+
+    fun getDbCategories (): LiveData<List<ExerciseCategory>> {
+        return  exerciseCategoryDao.getExerciseCategories()
+    }
+
+    fun getDbExercises (): LiveData<List<Exercises>> {
+        return  exerciseDao.getExercises()
     }
 }

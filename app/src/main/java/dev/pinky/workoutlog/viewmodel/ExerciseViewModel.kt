@@ -1,5 +1,6 @@
 package dev.pinky.workoutlog.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,8 +11,8 @@ import kotlinx.coroutines.launch
 
 class ExerciseViewModel:ViewModel() {
     val exerciseRepository = ExerciseRepository()
-    val  exerciseCategoryLiveData = MutableLiveData<List<ExerciseCategory>>()
-    val  exerciseLiveData = MutableLiveData<List<Exercises>>()
+    lateinit var exerciseCategoryLiveData : LiveData<List<ExerciseCategory>>
+    lateinit var  exerciseLiveData : LiveData<List<Exercises>>
 
     val errorLiveData = MutableLiveData<String?>()
 
@@ -19,11 +20,7 @@ class ExerciseViewModel:ViewModel() {
       viewModelScope.launch {
           val response = exerciseRepository.fetchExerciseCategories(accessToken)
           if (response.isSuccessful) {
-              exerciseCategoryLiveData.postValue(response.body())
-          }
-          else {
-              val errorMsg = response.errorBody()?.string()
-              errorLiveData.postValue(errorMsg)
+              errorLiveData.postValue(response.body()?.toString())
           }
       }
     }
@@ -31,13 +28,14 @@ class ExerciseViewModel:ViewModel() {
     fun fetchExercises(accessToken: String) {
         viewModelScope.launch {
             val response = exerciseRepository.fetchExercises(accessToken)
-            if (response.isSuccessful) {
-                exerciseLiveData.postValue(response.body())
-            }
-            else {
-                val errorMsg = response.errorBody()?.string()
-                errorLiveData.postValue(errorMsg)
-            }
+
         }
+    }
+    fun fetchDbCategories(){
+        exerciseCategoryLiveData = exerciseRepository.getDbCategories()
+    }
+
+    fun fetchDbExercises(){
+        exerciseLiveData = exerciseRepository.getDbExercises()
     }
 }
