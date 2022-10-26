@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import dev.pinky.workoutlog.models.ExerciseCategory
 import dev.pinky.workoutlog.models.Exercises
 
 @Dao
@@ -15,4 +14,6 @@ interface ExerciseDao {
 
     @Query( "SELECT * FROM Exercises")
     fun getExercises (): LiveData<List<Exercises>>
+    @Query("SELECT * FROM Exercises WHERE categoryId=  :categoryId ")
+    fun getExercisesByCategoryId(categoryId: String): LiveData<List<Exercises>>
 }

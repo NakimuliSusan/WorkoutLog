@@ -22,7 +22,6 @@ import java.util.EnumSet.of
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
     lateinit var sharedPrefs: SharedPreferences
-//    val profileViewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

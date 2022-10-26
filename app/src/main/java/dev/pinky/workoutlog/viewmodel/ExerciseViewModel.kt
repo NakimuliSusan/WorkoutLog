@@ -13,6 +13,7 @@ class ExerciseViewModel:ViewModel() {
     val exerciseRepository = ExerciseRepository()
     lateinit var exerciseCategoryLiveData : LiveData<List<ExerciseCategory>>
     lateinit var  exerciseLiveData : LiveData<List<Exercises>>
+    var selectedExerciseIds = mutableListOf<String>()
 
     val errorLiveData = MutableLiveData<String?>()
 
@@ -37,5 +38,8 @@ class ExerciseViewModel:ViewModel() {
 
     fun fetchDbExercises(){
         exerciseLiveData = exerciseRepository.getDbExercises()
+    }
+    fun getExerciseByCategoryId (categoryId: String){
+        exerciseLiveData = exerciseRepository.getExerciseCategoryId(categoryId)
     }
 }
