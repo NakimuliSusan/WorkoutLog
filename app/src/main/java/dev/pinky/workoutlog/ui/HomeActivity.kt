@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPrefs = getSharedPreferences(Constants.prefsFiles, MODE_PRIVATE)
-        val token = sharedPrefs.getString(Constants.accessToken,"").toString()
+        token = sharedPrefs.getString(Constants.accessToken,"").toString()
         exerciseViewModel.fetchDbExercises()
         exerciseViewModel.fetchDbCategories()
         binding = ActivityHomeBinding.inflate(layoutInflater)

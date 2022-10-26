@@ -1,5 +1,6 @@
 package dev.pinky.workoutlog.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,11 +17,16 @@ import dev.pinky.workoutlog.databinding.FragmentPlanBinding
 import dev.pinky.workoutlog.databinding.FragmentProfileBinding
 import dev.pinky.workoutlog.models.ExerciseCategory
 import dev.pinky.workoutlog.models.Exercises
+import dev.pinky.workoutlog.models.WorkoutPlan
+import dev.pinky.workoutlog.util.Constants
 import dev.pinky.workoutlog.viewmodel.ExerciseViewModel
+import dev.pinky.workoutlog.viewmodel.WorkoutPlanViewModel
+import java.util.UUID
 
 class PlanFragment : Fragment() {
     val exerciseViewModel : ExerciseViewModel by viewModels()
     var binding: FragmentPlanBinding? = null
+    val workoutPlanViewModel: WorkoutPlanViewModel by viewModels ( )
 
     val bind get() = binding!!
     override fun onCreateView(
@@ -38,6 +44,7 @@ class PlanFragment : Fragment() {
         exerciseViewModel.fetchDbExercises()
         setupCategorySpinner()
         bind.btnadditem.setOnClickListener { clickAddItem() }
+        checkForExistingWorkoutPlan()
     }
 
     fun setDaySpinner (){
@@ -107,10 +114,21 @@ class PlanFragment : Fragment() {
 
     }
 
+    fun checkForExistingWorkoutPlan(){
+        val prefs = requireContext().getSharedPreferences(Constants.prefsFiles,Context.MODE_PRIVATE)
+        val userId = prefs.getString(Constants.userId,"").toString()
+        workoutPlanViewModel.getExistingWorkoutPlans(userId)
+        workoutPlanViewModel.workoutPlanLivedata.observe(this, Observer { workoutPlan ->
+            if(workoutPlan == null){
+                val newWorkoutPlan = WorkoutPlan(UUID.randomUUID().toString(),userId)
+                workoutPlanViewModel.saveWorkoutPlan(newWorkoutPlan)
+            }
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
-
 
 }

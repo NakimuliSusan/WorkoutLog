@@ -17,6 +17,7 @@ class ExerciseRepository {
     val exerciseCategoryDao = database.exerciseCategoryDao()
     val exerciseDao = database.exerciseDao()
 
+
     suspend fun  fetchExerciseCategories(accessToken: String):Response<List<ExerciseCategory>>{
       return withContext(Dispatchers.IO) {
          var response = apiClient.fetchExerciseCategories(accessToken)
