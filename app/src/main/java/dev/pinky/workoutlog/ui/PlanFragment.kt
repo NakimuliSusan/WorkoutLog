@@ -27,6 +27,7 @@ class PlanFragment : Fragment() {
     val exerciseViewModel : ExerciseViewModel by viewModels()
     var binding: FragmentPlanBinding? = null
     val workoutPlanViewModel: WorkoutPlanViewModel by viewModels ( )
+    lateinit var workoutPlanId : String
 
     val bind get() = binding!!
     override fun onCreateView(
@@ -45,6 +46,7 @@ class PlanFragment : Fragment() {
         setupCategorySpinner()
         bind.btnadditem.setOnClickListener { clickAddItem() }
         checkForExistingWorkoutPlan()
+        bind.btnsave.setOnClickListener { clickSaveDay() }
     }
 
     fun setDaySpinner (){
@@ -106,7 +108,7 @@ class PlanFragment : Fragment() {
         }
         if(!error){
            val selectedExercise = bind.spexercise.selectedItem as Exercises
-            exerciseViewModel.selectedExerciseIds.add(selectedExercise.exerciseId)
+            workoutPlanViewModel.selectedExerciseIds.add(selectedExercise.exerciseId)
             bind.spexercise.setSelection(0)
             bind.spcategory.setSelection(0)
 
@@ -123,6 +125,7 @@ class PlanFragment : Fragment() {
                 val newWorkoutPlan = WorkoutPlan(UUID.randomUUID().toString(),userId)
                 workoutPlanViewModel.saveWorkoutPlan(newWorkoutPlan)
             }
+            workoutPlanId = workoutPlan.workoutPlanId
         })
     }
 
@@ -130,5 +133,36 @@ class PlanFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
+
+    fun getDayNumber(day:String):Int?{
+        val dayMap = HashMap<String,Int>()
+        dayMap.put("Monday", 1)
+        dayMap.put("Tuesday", 2)
+        dayMap.put("Wednesday", 3)
+        dayMap.put("Thursday", 4)
+        dayMap.put("Friday", 5)
+        dayMap.put("Saturday",6)
+        dayMap.put("Sunday",7)
+        return  dayMap.get(day)?:-1
+    }
+
+    fun clickSaveDay(){
+        if(bind.spdays.selectedItemPosition == 0){
+            Toast.makeText(requireContext(),"Select Day ",Toast.LENGTH_LONG).show()
+
+        }
+        val day = bind.spdays.selectedItem.toString()
+        val dayNumber = getDayNumber(day)
+        if (workoutPlanViewModel.selectedExerciseIds.isEmpty()) {
+            Toast.makeText(requireContext(),"Select Some Exercises for $day",Toast.LENGTH_LONG).show()
+        }
+
+        if (dayNumber != null) {
+            workoutPlanViewModel.createWorkoutPlanItem(dayNumber,workoutPlanId)
+        }
+        bind.spdays.setSelection(0)
+
+    }
+
 
 }

@@ -11,7 +11,7 @@ import dev.pinky.workoutlog.models.WorkoutPlan
 import dev.pinky.workoutlog.models.WorkoutPlanItem
 import java.security.AccessControlContext
 
-@Database(entities = arrayOf(ExerciseCategory::class, Exercises::class, WorkoutPlan::class, WorkoutPlanItem::class),  version = 4)
+@Database(entities = arrayOf(ExerciseCategory::class, Exercises::class, WorkoutPlan::class, WorkoutPlanItem::class),  version = 6)
 @TypeConverters(Converters::class)
 abstract class WorkoutDb : RoomDatabase() {
    abstract fun exerciseCategoryDao(): ExerciseCategoryDao

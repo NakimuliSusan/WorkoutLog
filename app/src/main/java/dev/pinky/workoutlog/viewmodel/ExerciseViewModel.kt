@@ -13,7 +13,6 @@ class ExerciseViewModel:ViewModel() {
     val exerciseRepository = ExerciseRepository()
     lateinit var exerciseCategoryLiveData : LiveData<List<ExerciseCategory>>
     lateinit var  exerciseLiveData : LiveData<List<Exercises>>
-    var selectedExerciseIds = mutableListOf<String>()
 
     val errorLiveData = MutableLiveData<String?>()
 
