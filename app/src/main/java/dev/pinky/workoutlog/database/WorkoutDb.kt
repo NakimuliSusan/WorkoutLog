@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import dev.pinky.workoutlog.models.*
 
-@Database(entities = arrayOf(ExerciseCategory::class, Exercises::class, WorkoutPlan::class, WorkoutPlanItem::class, WorkoutLogRecord::class),  version = 7)
+@Database(entities = arrayOf(ExerciseCategory::class, Exercises::class, WorkoutPlan::class, WorkoutPlanItem::class, WorkoutLogRecord::class),  version = 8)
 @TypeConverters(Converters::class)
 abstract class WorkoutDb : RoomDatabase() {
    abstract fun exerciseCategoryDao(): ExerciseCategoryDao

@@ -26,4 +26,8 @@ class WorkoutPlanRespository {
     fun getWorkoutPlanByUserId (userId: String):LiveData<WorkoutPlan>{
         return  workoutPlanDao.getWorkoutPlanByUserId(userId)
     }
+
+    fun getTodayWorkoutPlanItem (workoutPlanId:String, dayNumber:Int):LiveData<WorkoutPlanItem>{
+        return workPlanItemDao.getTodayWorkoutPlanItem(workoutPlanId,dayNumber)
+    }
 }

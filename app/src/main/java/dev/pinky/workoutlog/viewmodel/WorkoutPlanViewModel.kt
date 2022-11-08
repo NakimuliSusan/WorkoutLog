@@ -37,4 +37,8 @@ class WorkoutPlanViewModel:ViewModel() {
             workoutPlanRespository.saveWorkoutPlanItem(workoutPlanItem)
         }
     }
+
+    fun getTodayWorkoutPlanItem(workoutPlanId: String, dayNumber: Int):LiveData<WorkoutPlanItem>{
+        return  workoutPlanRespository.getTodayWorkoutPlanItem(workoutPlanId,dayNumber)
+    }
 }
