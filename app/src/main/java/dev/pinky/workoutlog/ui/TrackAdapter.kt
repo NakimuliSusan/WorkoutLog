@@ -18,16 +18,16 @@ class TrackAdapter(val exerciseList: List<Exercises>, val logWorkout: LogWorkout
         holder.binding.tvExerciseName.text = currentExercise.ExerciseName
         holder.binding.cbdone1.setOnClickListener{
             val weight = holder.binding.etWeightOne.text.toString()
-            val reps = holder.binding.etReps.text.toString()
+            val reps = holder.binding.etRepOne.text.toString()
             logWorkout.onClickdone(set = 1, weight = weight.toInt(),reps = reps.toInt(),currentExercise.exerciseId)
         }
-        holder.binding.cbdone.setOnClickListener{
-            val weight = holder.binding.etWeight2.text.toString()
-            val reps = holder.binding.editTextNumber4.text.toString()
+        holder.binding.cbdone2.setOnClickListener{
+            val weight = holder.binding.etWeighttwo.text.toString()
+            val reps = holder.binding.etReps2.text.toString()
             logWorkout.onClickdone(set = 2, weight = weight.toInt(),reps = reps.toInt(),currentExercise.exerciseId)
         }
-        holder.binding.checkBox3.setOnClickListener{
-            val weight = holder.binding.etWeight3.text.toString()
+        holder.binding.cbdone3.setOnClickListener{
+            val weight = holder.binding.etWeightthree.text.toString()
             val reps = holder.binding.etReps3.text.toString()
             logWorkout.onClickdone(set = 3, weight = weight.toInt(),reps = reps.toInt(),currentExercise.exerciseId)
         }

@@ -17,6 +17,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var sharedPrefs: SharedPreferences
     lateinit var token : String
     val exerciseViewModel :  ExerciseViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPrefs = getSharedPreferences(Constants.prefsFiles, MODE_PRIVATE)
